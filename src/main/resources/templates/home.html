@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="favicon.ico" rel="icon">
+
+    <title>EmpleosApp | Aplicación para publicar Ofertas de Trabajo.</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/jumbotron.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/sticky-footer-navbar.css}">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">EmpleosApp</a>
+        <button aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarsExampleDefault" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/vacantes/index}">Vacantes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/categorias/index}">Categorias</a>
+                </li>
+            </ul>
+            <a class="btn btn-primary" href="#">Ingresar</a>&nbsp;
+            <a class="btn btn-primary" href="#">Registrarse</a>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Encuentra el trabajo que andas buscando.</h3>
+            Puedes buscar por descripción y categoría.
+            <form class="form-inline">
+                <input class="form-control mb-3" id="exampleFormControlInput1" placeholder="Escriba una búsqueda"
+                       type="text">&nbsp;
+                <select class="custom-select custom-select mb-3">
+                    <option selected>Seleccione una categoría</option>
+                    <option value="1">Ventas</option>
+                    <option value="2">Contabilidad</option>
+                    <option value="3">Transporte</option>
+                    <option value="4">Informática</option>
+                    <option value="5">Construcción</option>
+                </select>&nbsp;
+                <button class="btn btn-primary mb-3" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <h2 class="font-weight-bold text-center text-capitalize">DESTACADOS</h2>
+        <hr>
+        <div class="row" th:each="vacante: ${vacantes}">
+            <div class="col-md-3">
+                <img alt="Generic placeholder image" class="rounded mx-auto d-block" height="220"
+                     th:src="@{/images/{img} (img=${vacante.imagen})}" width="220">
+            </div>
+            <div class="col-md-9">
+                <h2 th:text="${vacante.nombre}"></h2>
+                <h6 class="card-title"><strong>Categoría: </strong> <span></span></h6>
+                <h6 class="card-title"><strong>Publicado: </strong> <span vacante.fecha></span></h6>
+                <p vacante.descripcion></p>
+                <p><a class="btn btn-secondary" th:href="@{/vacantes/view/{id} (id=${vacante.id})} " role="button">Ver detalles &raquo;</a></p>
+            </div>
+
+
+            <hr>
+        </div> <!-- /container -->
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2019 EmpleosApp, Inc. | WebApp Desarrollada con Spring Boot 2.1.2 | Autor: Iv&aacute;n E. Tinajero D&iacute;az
+            | &middot; <a href="#">Privacy</a>
+            &middot; <a href="#">Terms</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

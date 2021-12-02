@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+    <body>
+        <h1>Empleos vigentes</h1>
+            <ol>
+                <li th:each="tempEmp:${empleos}" th:text="${tempEmp}"></li>
+            </ol>
+    </body>
+</html>
